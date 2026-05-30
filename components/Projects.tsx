@@ -5,6 +5,7 @@ import { playClick } from "@/lib/audio";
 
 interface ProjectItem {
   title: string;
+  date: string;
   biome: string;
   biomeColor: string;
   borderTheme: string;
@@ -13,89 +14,54 @@ interface ProjectItem {
   description: string;
   tech: string[];
   features: string[];
+  githubUrl: string;
+  liveUrl?: string;
   iconSvg: React.ReactNode;
 }
 
 const projects: ProjectItem[] = [
   {
-    title: "E-COMMERCE SYSTEM",
+    title: "FITNESS TRACKER APPLICATION",
+    date: "FEB 2026",
     biome: "FOREST BIOME",
     biomeColor: "text-[#55ff55]",
     borderTheme: "hover:border-[#5c8e32] hover:shadow-[0_0_15px_rgba(92,142,50,0.25)]",
     badgeBg: "bg-[#5c8e32]/35 border-[#5c8e32]",
     badgeText: "text-[#d8f3dc]",
-    description: "A WORLD-CLASS FULL-STACK SHOPPING PLATFORM SUPPORTING PRODUCT COMPILING AND DYNAMIC CUSTOMER CARTS.",
-    tech: ["NEXT.JS", "SPRING BOOT", "MYSQL"],
-    features: ["SECURE AUTH", "PRODUCT CORE", "CART SYSTEM", "STRIPE API"],
+    description: "DESIGNED AND BUILT A FULL-STACK FITNESS TRACKING SYSTEM USING JAVA, SPRING BOOT, AND MICROSERVICES ARCHITECTURE WITH REACT FRONTEND. IMPLEMENTED SERVICE DISCOVERY USING EUREKA, ASYNCHRONOUS COMMUNICATION WITH RABBITMQ, AND CONTAINERIZED SERVICES USING DOCKER. INTEGRATED MONGODB AND POSTGRESQL FOR DATA MANAGEMENT, SECURED APIS WITH KEYCLOAK AUTHENTICATION, AND ADDED AI-BASED INSIGHTS USING GEMINI API.",
+    tech: ["JAVA", "SPRING BOOT", "REACT", "EUREKA", "RABBITMQ", "DOCKER", "MONGODB", "POSTGRESQL", "KEYCLOAK", "GEMINI API"],
+    features: ["MICROSERVICES", "SERVICE DISCOVERY", "ASYNC MESSAGING", "AI INSIGHTS"],
+    githubUrl: "https://github.com/Shriyansh2004/fitness-microservices-app",
     iconSvg: (
-      // Oak Sapling
       <svg viewBox="0 0 16 16" className="w-10 h-10 [image-rendering:pixelated]">
         <path d="M7 14h2v2H7zM5 12h6v2H5zm-1-4h8v4H4zm1-3h6v3H5z" fill="#5c8e32" />
         <path d="M7 6h2v6H7zm-2 2h6v1H5z" fill="#866043" />
         <path d="M6 3h4v2H6z" fill="#a7c957" />
       </svg>
-    )
+    ),
   },
   {
-    title: "JOB PORTAL ENGINE",
+    title: "JOB SCRAPER PLATFORM",
+    date: "JAN 2026",
     biome: "DIAMOND CAVE",
     biomeColor: "text-[#55ffff]",
     borderTheme: "hover:border-[#33e3e3] hover:shadow-[0_0_15px_rgba(51,227,227,0.25)]",
     badgeBg: "bg-[#33e3e3]/20 border-[#33e3e3]",
     badgeText: "text-[#33e3e3]",
-    description: "AN ENTERPRISE-GRADE RECRUITMENT DATABASE MATCHING TALENT CHUNKS WITH ACTIVE EMPLOYER MISSIONS.",
-    tech: ["REACT", "SPRING BOOT", "POSTGRESQL"],
-    features: ["USER SESSIONS", "JOB LISTINGS", "RESUME LOOT", "DASHBOARD"],
+    description: "BUILT AN AI-POWERED FULL-STACK JOB SCRAPING PLATFORM THAT AGGREGATES LISTINGS FROM MULTIPLE JOB PORTALS INTO A UNIFIED DASHBOARD. IMPLEMENTED KEYWORD/LOCATION-BASED SCRAPING, JWT AUTHENTICATION, APPLICATION TRACKING, AND AN AI RESUME PARSER FOR SKILL EXTRACTION USING PYTHON (FASTAPI), REACT, TYPESCRIPT, TAILWINDCSS, AND POSTGRESQL, DEPLOYED ON NETLIFY AND RENDER.",
+    tech: ["PYTHON", "FASTAPI", "REACT", "TYPESCRIPT", "TAILWINDCSS", "POSTGRESQL", "JWT", "NETLIFY", "RENDER"],
+    features: ["MULTI-PORTAL SCRAPING", "JWT AUTH", "APP TRACKING", "AI RESUME PARSER"],
+    githubUrl: "https://github.com/Shriyansh2004/Job_Scrap",
+    liveUrl: "https://fastjobscraper.netlify.app/",
     iconSvg: (
-      // Diamond Block
       <svg viewBox="0 0 16 16" className="w-10 h-10 [image-rendering:pixelated]">
         <path d="M0 0h16v16H0z" fill="#33e3e3" />
         <path d="M1 1h14v14H1z" fill="#00aaaa" />
         <path d="M3 3h10v10H3z" fill="#d8f3f3" />
         <path d="M5 5h6v6H5z" fill="#33e3e3" />
       </svg>
-    )
+    ),
   },
-  {
-    title: "REAL-TIME MESSENGER",
-    biome: "NETHER REALM",
-    biomeColor: "text-[#ff5555]",
-    borderTheme: "hover:border-[#a30000] hover:shadow-[0_0_15px_rgba(163,0,0,0.3)]",
-    badgeBg: "bg-[#a30000]/25 border-[#a30000]",
-    badgeText: "text-[#ff7777]",
-    description: "A DYNAMIC MULTIPLAYER CHAT TERMINAL SECURED BY WEBSOCKET PIPELINES AND INSTANT TELEMETRY.",
-    tech: ["NEXT.JS", "SPRING BOOT", "WEBSOCKETS"],
-    features: ["LIVE CHAT", "PRESENCE BEAM", "NOTIFICATIONS", "EMOJI BLOCK"],
-    iconSvg: (
-      // Nether Portal / Fire block
-      <svg viewBox="0 0 16 16" className="w-10 h-10 [image-rendering:pixelated]">
-        <path d="M1 1h14v14H1z" fill="#2c003e" />
-        <path d="M3 3h10v10H3z" fill="#aa00ff" />
-        <path d="M5 5h6v6H5z" fill="#e0aaff" />
-        <path d="M2 2l12 12" stroke="#d400d4" strokeWidth="1" />
-      </svg>
-    )
-  },
-  {
-    title: "PORTFOLIO CMS",
-    biome: "THE END",
-    biomeColor: "text-[#ff55ff]",
-    borderTheme: "hover:border-[#aa00ff] hover:shadow-[0_0_15px_rgba(170,0,255,0.25)]",
-    badgeBg: "bg-[#aa00ff]/20 border-[#aa00ff]",
-    badgeText: "text-[#ff77ff]",
-    description: "AN INTEGRATED ADMINISTRATIVE CONSOLE SUPPORTING CONTENT EDITING AND REAL-TIME WORLD ANALYTICS.",
-    tech: ["NEXT.JS", "SPRING BOOT", "MONGODB"],
-    features: ["DYNAMICS", "ADMIN PANEL", "ANALYTICS", "VISITOR LOGS"],
-    iconSvg: (
-      // Eye of Ender
-      <svg viewBox="0 0 16 16" className="w-10 h-10 [image-rendering:pixelated]">
-        <circle cx="8" cy="8" r="6" fill="#0f4c5c" />
-        <circle cx="8" cy="8" r="3" fill="#a7c957" />
-        <circle cx="8" cy="8" r="1.5" fill="#f4f1de" />
-        <path d="M2 8h12" stroke="#a7c957" strokeWidth="1.5" />
-      </svg>
-    )
-  }
 ];
 
 export default function Projects() {
@@ -165,7 +131,7 @@ export default function Projects() {
                   </div>
 
                   <span className={`px-2.5 py-1 text-xs border font-vt323 uppercase ${proj.badgeBg} ${proj.badgeText}`}>
-                    ACTIVE
+                    {proj.date}
                   </span>
                 </div>
 
@@ -190,7 +156,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#3c3c3c] flex flex-wrap gap-2 items-center justify-between">
+              <div className="mt-6 pt-4 border-t border-[#3c3c3c] flex flex-col gap-4">
                 {/* Tech tags */}
                 <div className="flex flex-wrap gap-1.5">
                   {proj.tech.map((t, i) => (
@@ -203,14 +169,35 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Loot chest details button */}
-                <span 
-                  onClick={() => playClick()}
-                  className="text-xs font-vt323 uppercase text-[#ffff55] hover:text-white transition-colors cursor-pointer flex items-center gap-1"
-                  style={{ textShadow: "1px 1px 0px #000" }}
-                >
-                  [ OPEN LOOT ]
-                </span>
+                {/* Project links */}
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href={proj.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => playClick()}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 font-vt323 text-sm uppercase bg-[#8b8b8b] border-[3px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] text-white shadow-[2px_2px_0px_#000] hover:bg-[#9c9c9c] active:translate-y-[1px] active:shadow-none transition-all duration-100"
+                  >
+                    GitHub Repo
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                  {proj.liveUrl && (
+                    <a
+                      href={proj.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => playClick()}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 font-vt323 text-sm uppercase bg-[#5c8e32] border-[3px] border-t-[#a7c957] border-l-[#a7c957] border-b-[#38661b] border-r-[#38661b] text-white shadow-[2px_2px_0px_#000] hover:bg-[#6ba03c] active:translate-y-[1px] active:shadow-none transition-all duration-100"
+                    >
+                      Live Demo
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}

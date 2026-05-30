@@ -3,12 +3,20 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { playXPDing, playLevelUp } from "@/lib/audio";
 
+interface ExpLink {
+  label: string;
+  url: string;
+}
+
 interface ExpLevel {
   level: number;
   title: string;
   subtitle: string;
+  location: string;
   duration: string;
+  companyUrl: string;
   details: string[];
+  links?: ExpLink[];
   tech: string[];
 }
 
@@ -16,29 +24,33 @@ const levels: ExpLevel[] = [
   {
     level: 1,
     title: "SDE INTERN @ HIREKARMA",
-    subtitle: "SOFTWARE DEVELOPMENT ENGINEERING INTERN",
-    duration: "JAN 2026 - PRESENT",
+    subtitle: "HIREKARMA PVT. LTD.",
+    location: "Bhubaneswar",
+    duration: "APR 2026 - MAY 2026",
+    companyUrl: "https://hirekarma.in",
     details: [
-      "DEVELOPED SCALABLE WEB APPLICATIONS USING REACT, NEXT.JS, AND TYPESCRIPT.",
-      "COLLABORATED WITH DEV TEAMS TO DESIGN AND DEPLOY SPRING BOOT RESTFUL BACKENDS.",
-      "PARTICIPATED IN GIT WORKFLOWS, LINT COMPILING CHECKS, AND SCRUM REVIEWS.",
-      "OPTIMIZED FRONTEND METRICS BOOSTING RENDER SPEEDS AND IMPROVING LIGHTHOUSE SCOPES.",
+      "WORKING ON FULL-STACK DEVELOPMENT USING PYTHON, NEXT.JS, TYPESCRIPT, TAILWIND CSS, AND POSTGRESQL.",
+      "CONTRIBUTING TO SCALABLE WEB APPLICATIONS AND RESTFUL APIS, FOCUSING ON PERFORMANCE, CLEAN ARCHITECTURE, AND REAL-WORLD PRODUCT FEATURES.",
     ],
-    tech: ["NEXT.JS", "TYPESCRIPT", "TAILWIND CSS", "NODE.JS", "EXPRESS", "GIT"],
+    links: [
+      { label: "Lakshya Platform", url: "https://lakshya.hirekarma.in" },
+      { label: "Disha Platform", url: "https://disha.hirekarma.in" },
+    ],
+    tech: ["PYTHON", "NEXT.JS", "TYPESCRIPT", "TAILWIND CSS", "POSTGRESQL", "REST APIS"],
   },
   {
     level: 2,
-    title: "FULL STACK ARCHITECT",
-    subtitle: "ENTERPRISE SYSTEMS & PIPELINES",
-    duration: "JAN 2025 - DEC 2025",
+    title: "BACKEND DEVELOPMENT @ KAROCHARGE",
+    subtitle: "FUTURE MOTION PVT LTD",
+    location: "New Delhi (Remote)",
+    duration: "DEC 2025 - PRESENT",
+    companyUrl: "https://karocharge.com",
     details: [
-      "BUILT SCALABLE WEB PORTALS LINKED TO RELATIONAL POSTGRESQL/MYSQL ENGINE STORES.",
-      "DESIGNED SECURE SPRING SECURITY TOKEN SCHEMAS AND DATA JPA ENTITY MODELS.",
-      "CONFIGURED DOCKER CONTAINERS AND CI/CD WORKFLOWS FOR AUTOMATED DEPLOYMENTS.",
-      "INTEGRATED REAL-TIME WEBSOCKET SERVICES SUPPORTING CHAT CONVERSATIONS.",
+      "DEVELOPED BACKEND SYSTEMS FOR EV CHARGING INFRASTRUCTURE USING SPRING BOOT, ENABLING COMMUNICATION WITH MULTIPLE CHARGING MANAGEMENT SYSTEMS (CMS) TO CONTROL REAL AND VIRTUAL CHARGERS.",
+      "WORKED WITH SQL, RESTFUL APIS, AND GAINED EXPERIENCE IN API TESTING, SYSTEM MONITORING, AND SCALABLE BACKEND DESIGN.",
     ],
-    tech: ["JAVA", "SPRING BOOT", "SPRING SECURITY", "SPRING DATA JPA", "POSTGRESQL", "DOCKER"],
-  }
+    tech: ["JAVA", "SPRING BOOT", "SQL", "REST APIS", "CMS INTEGRATION"],
+  },
 ];
 
 export default function Experience() {
@@ -173,6 +185,22 @@ export default function Experience() {
                       </h3>
                       <p className="font-vt323 text-sm md:text-base uppercase tracking-wider text-neutral-400 mt-1">
                         {lvl.subtitle}
+                        {" · "}
+                        <a
+                          href={lvl.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-1 transition-colors ${
+                            isUnlocked
+                              ? "text-[#33e3e3] hover:text-[#55ffff] underline underline-offset-2"
+                              : "text-neutral-600 pointer-events-none"
+                          }`}
+                        >
+                          {lvl.companyUrl.replace("https://", "")}
+                        </a>
+                      </p>
+                      <p className="font-vt323 text-xs md:text-sm uppercase tracking-wider text-neutral-500 mt-1">
+                        {lvl.location}
                       </p>
                     </div>
                     <div className="font-vt323 text-sm md:text-base uppercase text-neutral-400 bg-[#1c1c1c] px-3 py-1.5 border border-[#3c3c3c]">
@@ -198,6 +226,29 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
+
+                  {lvl.links && lvl.links.length > 0 && (
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {lvl.links.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 font-vt323 text-sm uppercase border-[3px] transition-all duration-100 ${
+                            isUnlocked
+                              ? "bg-[#5c8e32] border-t-[#a7c957] border-l-[#a7c957] border-b-[#38661b] border-r-[#38661b] text-white shadow-[2px_2px_0px_#000] hover:bg-[#6ba03c] active:translate-y-[1px] active:shadow-none"
+                              : "bg-[#333] border-t-[#555] border-l-[#555] border-b-[#111] border-r-[#111] text-neutral-600 pointer-events-none"
+                          }`}
+                        >
+                          {link.label}
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Tech slots */}
                   <div className="pt-4 border-t border-[#3c3c3c]/50 flex flex-wrap gap-2">
