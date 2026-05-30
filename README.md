@@ -22,12 +22,12 @@
 
 | | |
 |---|---|
-| **Play Online** | [anubhabsahoo.dev](https://anubhabsahoo.dev) |
+| **Play Online** | [anubhabsahoo.dev](https://portfolio-nrxvudujw-anubhabhirekarma-1745s-projects.vercel.app/) |
 | **Player** | Anubhab Sahoo — Full Stack / Java Backend Developer |
 | **World Type** | Single-page portfolio with 3D voxel backdrop |
 
 <p align="center">
-  <a href="https://anubhabsahoo.dev">
+  <a href="https://portfolio-nrxvudujw-anubhabhirekarma-1745s-projects.vercel.app/">
     <img src="public/profile.png" alt="Anubhab Sahoo — Portfolio Preview" width="180" style="image-rendering: pixelated;" />
   </a>
 </p>
