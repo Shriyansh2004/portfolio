@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Download } from "lucide-react";
 import { playClick } from "@/lib/audio";
@@ -36,30 +37,22 @@ export default function Hero() {
       className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-transparent py-20 px-4 md:px-8 pointer-events-none"
     >
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center justify-center text-center space-y-6 mt-12 pointer-events-auto">
-        {/* Profile Avatar Placeholder with Minecraft Nameplate look */}
+        {/* Profile Avatar with Minecraft Nameplate look */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative w-28 h-28 md:w-36 md:h-36 p-[3px] bg-[#8f8f8f] border-[4px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] shadow-lg group [image-rendering:pixelated]"
         >
-          <div className="w-full h-full bg-[#1e1e1e] border-[3px] border-t-[#3f3f3f] border-l-[#3f3f3f] border-b-[#dfdfdf] border-r-[#dfdfdf] flex items-center justify-center relative overflow-hidden">
-            <svg
-              className="w-16 h-16 text-[#33e3e3] group-hover:scale-110 transition-transform duration-300 z-10 filter drop-shadow-[2px_2px_0px_#000]"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Voxel style lightning bolt */}
-              <path
-                strokeLinecap="square"
-                strokeLinejoin="miter"
-                strokeWidth={2}
-                d="M13 2L3 14h9v8l10-12h-9V2z"
-              />
-            </svg>
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px]" />
+          <div className="w-full h-full bg-[#1e1e1e] border-[3px] border-t-[#3f3f3f] border-l-[#3f3f3f] border-b-[#dfdfdf] border-r-[#dfdfdf] relative overflow-hidden">
+            <Image
+              src="/profile.png"
+              alt="Anubhab Sahoo"
+              fill
+              className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              priority
+            />
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px] pointer-events-none" />
           </div>
         </motion.div>
 
