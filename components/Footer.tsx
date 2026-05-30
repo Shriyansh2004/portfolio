@@ -2,74 +2,44 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
-
-const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-  </svg>
-);
-
-const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-    <rect x="2" y="9" width="4" height="12"></rect>
-    <circle cx="4" cy="4" r="2"></circle>
-  </svg>
-);
+import { playClick } from "@/lib/audio";
 
 export default function Footer() {
   const scrollToTop = () => {
+    playClick();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <footer className="w-full bg-black py-12 px-4 md:px-8 border-t border-neutral-950 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+    <footer className="w-full bg-[#151515] py-12 px-4 md:px-8 border-t-[6px] border-[#222] relative overflow-hidden [image-rendering:pixelated]">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 font-vt323 uppercase text-lg text-neutral-400">
         
         {/* Left Side */}
         <div className="text-center md:text-left">
-          <h4 className="text-lg font-bold text-white font-display tracking-tight">Anubhab Sahoo</h4>
-          <p className="text-xs md:text-sm text-neutral-500 mt-1">
-            © {new Date().getFullYear()} Anubhab Sahoo. All rights reserved.
+          <h4 className="text-xl font-bold text-white tracking-wide uppercase" style={{ textShadow: "1px 1px 0px #000" }}>ANUBHAB SAHOO</h4>
+          <p className="text-sm text-neutral-500 mt-1">
+            © {new Date().getFullYear()} ANUBHAB SAHOO. ALL RIGS SECURED.
           </p>
         </div>
 
         {/* Middle Links */}
-        <div className="flex flex-wrap justify-center gap-6 text-sm text-neutral-500 font-medium">
-          <Link href="#home" className="hover:text-white transition-colors">Home</Link>
-          <Link href="#about" className="hover:text-white transition-colors">About</Link>
-          <Link href="#skills" className="hover:text-white transition-colors">Skills</Link>
-          <Link href="#experience" className="hover:text-white transition-colors">Experience</Link>
-          <Link href="#projects" className="hover:text-white transition-colors">Projects</Link>
-          <Link href="#contact" className="hover:text-white transition-colors">Contact</Link>
+        <div className="flex flex-wrap justify-center gap-6">
+          <Link href="#home" onClick={() => playClick()} className="hover:text-[#ffff55] transition-colors">[ HOME ]</Link>
+          <Link href="#about" onClick={() => playClick()} className="hover:text-[#ffff55] transition-colors">[ ABOUT ]</Link>
+          <Link href="#skills" onClick={() => playClick()} className="hover:text-[#ffff55] transition-colors">[ SKILLS ]</Link>
+          <Link href="#experience" onClick={() => playClick()} className="hover:text-[#ffff55] transition-colors">[ EXP ]</Link>
+          <Link href="#projects" onClick={() => playClick()} className="hover:text-[#ffff55] transition-colors">[ PROJECTS ]</Link>
+          <Link href="#contact" onClick={() => playClick()} className="hover:text-[#ffff55] transition-colors">[ CONTACT ]</Link>
         </div>
 
-        {/* Right Side */}
-        <div className="flex items-center gap-4">
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noreferrer"
-            className="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700 transition-all duration-300 animate-none"
-          >
-            <GithubIcon className="w-4 h-4" />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noreferrer"
-            className="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-cyan-400 hover:border-cyan-800/30 transition-all duration-300 animate-none"
-          >
-            <LinkedinIcon className="w-4 h-4" />
-          </a>
-          <button
-            onClick={scrollToTop}
-            className="w-10 h-10 rounded-full flex items-center justify-center bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700 hover:bg-neutral-850 transition-all duration-300 cursor-pointer"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp size={16} />
-          </button>
-        </div>
+        {/* Scroll to Top */}
+        <button
+          onClick={scrollToTop}
+          onMouseEnter={() => playClick()}
+          className="bg-[#8b8b8b] border-[3px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] text-white p-2.5 shadow-[2px_2px_0px_#000] hover:bg-[#9c9c9c] active:translate-y-[1px] active:shadow-none cursor-pointer"
+        >
+          <ArrowUp size={20} className="filter drop-shadow-[1px_1px_0px_#000]" />
+        </button>
       </div>
     </footer>
   );
