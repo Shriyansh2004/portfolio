@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { Mail, MapPin, CheckCircle2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { playClick, playPortalTravel } from "@/lib/audio";
 
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -25,198 +26,202 @@ export default function Contact() {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
+    // Trigger full Nether portalFM swirling sweep!
+    playPortalTravel();
     setStatus("sending");
-    // Mock submit timeout
+    
     setTimeout(() => {
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       
-      // Reset success status after 4 seconds
       setTimeout(() => {
         setStatus("idle");
       }, 4000);
-    }, 1500);
+    }, 2000);
   };
 
   return (
     <section
       id="contact"
-      className="relative w-full py-24 px-4 md:px-8 bg-black overflow-hidden border-t border-neutral-900 bg-dot-white"
+      className="relative w-full py-24 px-4 md:px-8 bg-transparent overflow-hidden"
     >
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-900/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-900/10 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Heading */}
-        <div className="flex flex-col items-center justify-center text-center mb-16 space-y-4">
-          <motion.h2
+      <div className="max-w-6xl mx-auto relative z-10">
+        
+        {/* Section Wooden Header */}
+        <div className="flex flex-col items-center justify-center text-center mb-16">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl font-extrabold font-display bg-gradient-to-r from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent"
+            transition={{ duration: 0.5 }}
+            onMouseEnter={() => playClick()}
+            className="px-8 py-4 bg-[#7a5c3a] border-[4px] border-t-[#a87c54] border-l-[#a87c54] border-b-[#473521] border-r-[#473521] shadow-2xl [image-rendering:pixelated]"
           >
-            Get In Touch
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-sm md:text-base text-neutral-400 max-w-xl text-center"
-          >
-            Have a question or want to work together? Drop me a message below.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="h-[2px] w-24 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full"
-          />
+            <h2 
+              className="text-2xl md:text-4xl font-extrabold font-vt323 text-[#ffff55] uppercase"
+              style={{ textShadow: "2px 2px 0px #3c2d1b" }}
+            >
+              [ CHAT TERMINAL: NETHER PORTAL ]
+            </h2>
+          </motion.div>
+          <div className="w-4 h-12 bg-[#5c3a21] border-x-[4px] border-[#3a2515] -mt-1" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-          {/* Info Side */}
+          
+          {/* Narrative Info Box */}
           <motion.div
             initial={{ opacity: 0, x: -45 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-5 flex flex-col justify-between space-y-8"
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 flex flex-col justify-between p-6 bg-[#3c2d1b]/95 border-[6px] border-t-[#5c4428] border-l-[#5c4428] border-b-[#1c140c] border-r-[#1c140c] shadow-2xl relative [image-rendering:pixelated] text-white font-vt323 uppercase"
           >
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-white font-display">
-                Let's discuss something <span className="text-cyan-400">significant</span>.
+              <h3 
+                className="text-2xl font-bold text-[#ffff55]"
+                style={{ textShadow: "2px 2px 0px #000" }}
+              >
+                Let's discuss something big.
               </h3>
-              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
-                Whether you are a recruiter looking for a software developer with deep automation and hardware engineering instincts, or a tech lead seeking full-stack execution, I am ready to collaborate.
+              <p className="text-neutral-300 text-lg leading-relaxed">
+                Whether you are a recruiter looking for a full stack developer, or a tech lead seeking robust Spring Boot APIs, I am ready to deploy.
               </p>
             </div>
 
-            <div className="space-y-4 py-6 border-y border-neutral-900">
-              <div className="flex items-center gap-4 group">
-                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 text-cyan-400 group-hover:border-cyan-500/30 group-hover:scale-105 transition-all duration-300">
+            <div className="space-y-4 py-6 border-y border-[#1c140c] my-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-[#8b8b8b] border-[3px] border-t-[#3f3f3f] border-l-[#3f3f3f] border-b-[#dfdfdf] border-r-[#dfdfdf] flex items-center justify-center text-white">
                   <Mail size={20} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">Email</h4>
-                  <a href="mailto:anubhab.sahoo@example.com" className="text-sm font-semibold text-white hover:text-cyan-400 transition-colors">
+                  <h4 className="text-xs text-neutral-400">Email Address:</h4>
+                  <a 
+                    href="mailto:anubhab.sahoo@example.com" 
+                    onClick={() => playClick()}
+                    className="text-lg text-[#33e3e3] hover:text-white transition-colors"
+                  >
                     anubhab.sahoo@example.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 group">
-                <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 text-blue-400 group-hover:border-blue-500/30 group-hover:scale-105 transition-all duration-300">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-[#8b8b8b] border-[3px] border-t-[#3f3f3f] border-l-[#3f3f3f] border-b-[#dfdfdf] border-r-[#dfdfdf] flex items-center justify-center text-white">
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">Location</h4>
-                  <span className="text-sm font-semibold text-white">
+                  <h4 className="text-xs text-neutral-400">Spawn Coordinates:</h4>
+                  <span className="text-lg text-white">
                     Bhubaneswar, Odisha, India
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4 pt-4">
+            {/* Social Inventory Frames */}
+            <div className="flex gap-4">
               <a
                 href="https://github.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-700 hover:scale-105 transition-all duration-300"
+                onClick={() => playClick()}
+                onMouseEnter={() => playClick()}
+                className="w-12 h-12 bg-[#8b8b8b] border-[3px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] flex items-center justify-center text-white hover:bg-[#9c9c9c] transition-colors relative"
               >
-                <GithubIcon className="w-5 h-5" />
+                <GithubIcon className="w-6 h-6 filter drop-shadow-[1px_1px_0px_#000]" />
               </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-cyan-400 hover:border-cyan-800/30 hover:scale-105 transition-all duration-300"
+                onClick={() => playClick()}
+                onMouseEnter={() => playClick()}
+                className="w-12 h-12 bg-[#8b8b8b] border-[3px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] flex items-center justify-center text-white hover:bg-[#9c9c9c] transition-colors relative"
               >
-                <LinkedinIcon className="w-5 h-5" />
+                <LinkedinIcon className="w-6 h-6 filter drop-shadow-[1px_1px_0px_#000]" />
               </a>
             </div>
           </motion.div>
 
-          {/* Form Side */}
+          {/* Portal Message Form */}
           <motion.div
             initial={{ opacity: 0, x: 45 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-7"
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 flex flex-col justify-between p-6 bg-[#2a2a2a]/95 border-[6px] border-t-[#555] border-l-[#555] border-b-[#111] border-r-[#111] shadow-2xl relative [image-rendering:pixelated]"
           >
-            <div className="relative rounded-3xl border border-neutral-800 bg-neutral-950/40 p-8 backdrop-blur-md overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-full blur-xl" />
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Your name"
-                    className="w-full px-4 py-3 rounded-2xl border border-neutral-850 bg-neutral-900/60 text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all duration-200"
-                  />
-                </div>
+            {/* Voxel corner indicators */}
+            <div className="absolute top-1 left-1 w-2.5 h-2.5 bg-[#555]" />
+            <div className="absolute top-1 right-1 w-2.5 h-2.5 bg-[#555]" />
+            <div className="absolute bottom-1 left-1 w-2.5 h-2.5 bg-[#111]" />
+            <div className="absolute bottom-1 right-1 w-2.5 h-2.5 bg-[#111]" />
 
-                <div>
-                  <label htmlFor="email" className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="Your email address"
-                    className="w-full px-4 py-3 rounded-2xl border border-neutral-850 bg-neutral-900/60 text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all duration-200"
-                  />
-                </div>
+            <form onSubmit={handleSubmit} className="space-y-6 font-vt323 uppercase text-lg">
+              <div>
+                <label htmlFor="name" className="block text-sm text-neutral-400 mb-2">
+                  [ Sender Name ]
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  value={formData.name}
+                  onFocus={() => playClick()}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="INPUT NAME..."
+                  className="w-full bg-[#111111] border-[3px] border-t-[#333] border-l-[#333] border-b-[#555] border-r-[#555] p-3 text-white placeholder-neutral-600 outline-none focus:border-[#ffff55]"
+                />
+              </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell me about your project or role details..."
-                    className="w-full px-4 py-3 rounded-2xl border border-neutral-850 bg-neutral-900/60 text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/20 transition-all duration-200 resize-none"
-                  />
-                </div>
+              <div>
+                <label htmlFor="email" className="block text-sm text-neutral-400 mb-2">
+                  [ Sender Coordinate Email ]
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  value={formData.email}
+                  onFocus={() => playClick()}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="INPUT EMAIL..."
+                  className="w-full bg-[#111111] border-[3px] border-t-[#333] border-l-[#333] border-b-[#555] border-r-[#555] p-3 text-white placeholder-neutral-600 outline-none focus:border-[#ffff55]"
+                />
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={status === "sending" || status === "success"}
-                  className="w-full py-4 rounded-2xl bg-cyan-500 text-black font-semibold hover:bg-cyan-400 active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 disabled:bg-neutral-850 disabled:text-neutral-500 cursor-pointer shadow-[0_0_15px_rgba(6,182,212,0.2)]"
-                >
-                  {status === "idle" && (
-                    <>
-                      Send Message <Send size={16} />
-                    </>
-                  )}
-                  {status === "sending" && "Sending message..."}
-                  {status === "success" && (
-                    <>
-                      Message Sent! <CheckCircle2 size={16} className="text-black" />
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
+              <div>
+                <label htmlFor="message" className="block text-sm text-neutral-400 mb-2">
+                  [ Scroll Content Message ]
+                </label>
+                <textarea
+                  id="message"
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onFocus={() => playClick()}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="WRITE TRANSMISSION CONTENT..."
+                  className="w-full bg-[#111111] border-[3px] border-t-[#333] border-l-[#333] border-b-[#555] border-r-[#555] p-3 text-white placeholder-neutral-600 outline-none focus:border-[#ffff55] resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === "sending" || status === "success"}
+                onMouseEnter={() => playClick()}
+                className="w-full py-4 bg-[#5c8e32] border-[4px] border-t-[#a7c957] border-l-[#a7c957] border-b-[#38661b] border-r-[#38661b] text-white font-vt323 text-xl uppercase shadow-[3px_3px_0px_#000] hover:bg-[#6ba03c] active:translate-y-[2px] active:shadow-none cursor-pointer transition-all duration-100 flex items-center justify-center gap-2 disabled:bg-[#333] disabled:border-[#111] disabled:text-neutral-500 disabled:shadow-none"
+              >
+                {status === "idle" && "ACTIVATE NETHER PORTAL TRANSMISSION"}
+                {status === "sending" && "SWIRLING DIMENSIONAL TELEMETRY..."}
+                {status === "success" && (
+                  <span className="flex items-center gap-2 text-[#55ff55]">
+                    TRANSMISSION COMPLETE! <CheckCircle2 size={18} />
+                  </span>
+                )}
+              </button>
+            </form>
           </motion.div>
         </div>
       </div>
