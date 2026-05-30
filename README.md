@@ -28,7 +28,7 @@
 
 <p align="center">
   <a href="https://portfolio-nrxvudujw-anubhabhirekarma-1745s-projects.vercel.app/">
-    <img src="public/profile.png" alt="Anubhab Sahoo — Portfolio Preview" width="180" style="image-rendering: pixelated;" />
+    <img src="https://github.com/user-attachments/assets/6d57fbc2-f12e-4a22-ac4e-9bdedd79111f" />
   </a>
 </p>
 
