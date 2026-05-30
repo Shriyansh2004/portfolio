@@ -88,7 +88,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="h-10 md:h-12 flex items-center justify-center text-lg md:text-2xl font-vt323 text-neutral-300 uppercase"
         >
-          <span className="mr-2 text-neutral-400">I am a</span>
+          <span className="mr-2 text-neutral-400">I am a Java Full Stack Developer </span>
           <div className="relative inline-block text-left overflow-hidden min-w-[200px] md:min-w-[320px]">
             <AnimatePresence mode="wait">
               <motion.span
