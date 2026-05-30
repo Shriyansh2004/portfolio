@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Mail, MapPin, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Phone, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { playClick, playPortalTravel } from "@/lib/audio";
 
@@ -97,11 +97,27 @@ export default function Contact() {
                 <div>
                   <h4 className="text-xs text-neutral-400">Email Address:</h4>
                   <a 
-                    href="mailto:anubhab.sahoo@example.com" 
+                    href="mailto:sanubhab629@gmail.com" 
                     onClick={() => playClick()}
                     className="text-lg text-[#33e3e3] hover:text-white transition-colors"
                   >
-                    anubhab.sahoo@example.com
+                    sanubhab629@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-[#8b8b8b] border-[3px] border-t-[#3f3f3f] border-l-[#3f3f3f] border-b-[#dfdfdf] border-r-[#dfdfdf] flex items-center justify-center text-white">
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <h4 className="text-xs text-neutral-400">Phone Number:</h4>
+                  <a
+                    href="tel:+916372430840"
+                    onClick={() => playClick()}
+                    className="text-lg text-[#33e3e3] hover:text-white transition-colors"
+                  >
+                    +91 63724 30840
                   </a>
                 </div>
               </div>
@@ -122,9 +138,9 @@ export default function Contact() {
             {/* Social Inventory Frames */}
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/Shriyansh2004"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 onClick={() => playClick()}
                 onMouseEnter={() => playClick()}
                 className="w-12 h-12 bg-[#8b8b8b] border-[3px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] flex items-center justify-center text-white hover:bg-[#9c9c9c] transition-colors relative"
@@ -132,9 +148,9 @@ export default function Contact() {
                 <GithubIcon className="w-6 h-6 filter drop-shadow-[1px_1px_0px_#000]" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/anubhab-sahoo-76a9302b7"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 onClick={() => playClick()}
                 onMouseEnter={() => playClick()}
                 className="w-12 h-12 bg-[#8b8b8b] border-[3px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] flex items-center justify-center text-white hover:bg-[#9c9c9c] transition-colors relative"

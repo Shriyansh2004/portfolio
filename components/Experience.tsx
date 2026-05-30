@@ -26,7 +26,7 @@ const levels: ExpLevel[] = [
     title: "SDE INTERN @ HIREKARMA",
     subtitle: "HIREKARMA PVT. LTD.",
     location: "Bhubaneswar",
-    duration: "APR 2026 - PRESENT",
+    duration: "APR 2026 - MAY 2026",
     companyUrl: "https://hirekarma.in",
     details: [
       "WORKING ON FULL-STACK DEVELOPMENT USING PYTHON, NEXT.JS, TYPESCRIPT, TAILWIND CSS, AND POSTGRESQL.",
