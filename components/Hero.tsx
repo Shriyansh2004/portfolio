@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight, Download, FileText } from "lucide-react";
 import { playClick } from "@/lib/audio";
+import ResumeViewer from "@/components/ResumeViewer";
 
 const roles = [
   "FULL STACK DEVELOPER",
@@ -15,6 +16,9 @@ const roles = [
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
+  const handleCloseResume = useCallback(() => setIsResumeOpen(false), []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -122,7 +126,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 z-20"
+          className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 pt-4 z-20"
         >
           <button
             onClick={handleScrollToProjects}
@@ -131,9 +135,19 @@ export default function Hero() {
           >
             View Projects <ArrowUpRight size={18} />
           </button>
+          <button
+            onClick={() => {
+              playClick();
+              setIsResumeOpen(true);
+            }}
+            onMouseEnter={() => playClick()}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#8b8b8b] border-[3px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] text-white font-vt323 text-lg px-8 py-3 uppercase shadow-[3px_3px_0px_#000] hover:bg-[#9c9c9c] active:translate-y-[2px] active:shadow-none cursor-pointer transition-all duration-100 group"
+          >
+            View Resume <FileText size={18} className="group-hover:scale-110 transition-transform" />
+          </button>
           <a
             href="/resume.pdf"
-            download
+            download="ANUBHAB_SAHOO_cv.pdf"
             onClick={() => playClick()}
             onMouseEnter={() => playClick()}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#8b8b8b] border-[3px] border-t-[#dfdfdf] border-l-[#dfdfdf] border-b-[#3f3f3f] border-r-[#3f3f3f] text-white font-vt323 text-lg px-8 py-3 uppercase shadow-[3px_3px_0px_#000] hover:bg-[#9c9c9c] active:translate-y-[2px] active:shadow-none cursor-pointer transition-all duration-100 group"
@@ -142,6 +156,8 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
+
+      <ResumeViewer isOpen={isResumeOpen} onClose={handleCloseResume} />
 
       {/* Retro border bottom */}
       <div className="absolute bottom-0 left-0 w-full h-[4px] bg-[#3f3f3f]" />
